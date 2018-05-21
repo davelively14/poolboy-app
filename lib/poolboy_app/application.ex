@@ -20,9 +20,14 @@ defmodule PoolboyApp.Application do
 
   defp poolboy_config do
     [
+      # Named the pool :worker and set scope to :local
       {:name, {:local, :worker}},
+      # Set module for the worker
       {:worker_module, PoolboyApp.Worker},
+      # Set pool size
       {:size, 5},
+      # In case everything is uder load, create two more workers. They go away
+      #
       {:max_overflow, 2}
     ]
   end
